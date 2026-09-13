@@ -242,7 +242,7 @@ export const Settings = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { theme, setTheme, resolvedTheme } = useTheme();
 
-  const isDark = resolvedTheme === "dark";
+  const isDark = resolvedTheme ? resolvedTheme === "dark" : true;
 
   useEffect(() => {
     const saved = loadSettings();
@@ -346,7 +346,7 @@ export const Settings = () => {
                     onClick={() => setTheme("dark")}
                     className={cn(
                       "flex items-center justify-center gap-1 py-1 px-1.5 rounded-md text-xs font-medium transition-all cursor-pointer",
-                      theme === "dark"
+                      theme === "dark" || (!theme && isDark)
                         ? "bg-white dark:bg-neutral-700 text-foreground shadow-xs font-semibold"
                         : "text-foreground/70 hover:text-foreground"
                     )}

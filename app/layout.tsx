@@ -65,11 +65,13 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={cn(
+        "dark",
         inter.variable,
         schibstedGrotesk.variable,
         GeistSans.variable,
         "font-sans antialiased",
       )}
+      style={{ colorScheme: "dark" }}
       suppressHydrationWarning
     >
       <head>
@@ -77,13 +79,13 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/yuvraj.png?v=2" type="image/png" />
         <link rel="apple-touch-icon" href="/yuvraj.png?v=2" />
       </head>
-      <body className={cn("font-display bg-theme-bg")}>
-        <Settings />
-        <Navbar />
-        <main>
-          <Providers>{children}</Providers>
-        </main>
-        <Footer />
+      <body className={cn("font-display bg-theme-bg text-foreground")}>
+        <Providers>
+          <Settings />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
         {analyticsDomain && analyticsScriptUrl ? (
           <Script
             src={analyticsScriptUrl}
